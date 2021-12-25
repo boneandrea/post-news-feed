@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "prettier --write *.js "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "posix": "^4.2.0",
+    "prettier": "^2.0.5"
+  }
+}
