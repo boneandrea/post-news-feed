@@ -110,7 +110,12 @@ const create_message = (rss) => {
         return null
     }
 
-    if (typeof items.join(' / ') === 'string') {
+    if(!items.length){
+        mylog('empty')
+        return null
+    }
+
+    if (typeof items[0] === "string"){
         return title + ' : ' + items.join(' / ')
     }
 
@@ -118,13 +123,7 @@ const create_message = (rss) => {
     return null
 }
 
-const send = (rss) => {
-    const message = create_message(rss)
-    if (!message) {
-        mylog('msg is null')
-        return
-    }
-
+const send = (message) => {
     mylog(`${process.env.CRON_RUN ? '' : 'NOT'} SEND HTTP...`, message)
 
     if (process.env.CRON_RUN) {
@@ -140,7 +139,12 @@ const main = async () => {
         const feedUrl = await select_media_xml()
         await getData(feedUrl)
             .then((rss) => {
-                send(rss)
+                const message = create_message(rss)
+                if (!message) {
+                    mylog('msg is null')
+                    throw new Error('msg is null')
+                }
+                send(message)
                 success = true
             })
             .catch((e) => {
