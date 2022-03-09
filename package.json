@@ -10,7 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "jsdom": "^19.0.0",
     "posix": "^4.2.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "request": "^2.88.2",
+    "xml2js": "^0.4.23"
   }
 }
